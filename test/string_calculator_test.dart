@@ -22,4 +22,7 @@ void main() {
   test('numbers separated by newline and comma return sum', () {
     expect(calculator.add('1\n2,3'), 6);
   });
+  test('custom delimiter support', () {
+    expect(calculator.add('//;\n1;2'), 3);
+  });
 }
