@@ -13,7 +13,13 @@ class StringCalculator {
 
     numberSection = numberSection.replaceAll('\n', delimiter);
 
-    final parts = numberSection.split(delimiter);
-    return parts.map(int.parse).reduce((a, b) => a + b);
+    final nums = numberSection.split(delimiter).map(int.parse).toList();
+    final negatives = nums.where((n) => n < 0).toList();
+
+    if (negatives.isNotEmpty) {
+      throw Exception('negative numbers not allowed ${negatives.join(",")}');
+    }
+
+    return nums.reduce((a, b) => a + b);
   }
 }
